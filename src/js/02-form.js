@@ -21,7 +21,11 @@ form.addEventListener("input", () => {
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    console.log(JSON.parse(localStorage.getItem(localStorageKey)));   
+    if (form.elements.message.value.trim() && form.elements.email.value.trim()) {
+        console.log(JSON.parse(localStorage.getItem(localStorageKey)));   
 
-    localStorage.clear;
+        localStorage.clear();
+        form.elements.email.value = "";
+        form.elements.message.value = "";
+    }
 })
